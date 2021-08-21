@@ -1,0 +1,5 @@
+/*.*
+/**/*.d.ts
+/**/*.s[ac]ss
+/examples/**/webpack*
+/examples/**/babel*

@@ -7,6 +7,15 @@
   "author": "Mark Bevels <mark.bevels@derived.studio>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-typescript": "^7.15.0",
+    "babel-jest": "^27.0.6",
+    "jest": "^27.0.6",
     "prettier": "^2.3.2"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.14.5"
   }
 }

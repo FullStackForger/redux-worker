@@ -1,0 +1,9 @@
+{
+  "name": "redux-worker",
+  "version": "1.0.0",
+  "description": "Redux in worker process",
+  "main": "index.js",
+  "repository": "git@github.com:derived-studio/redux-worker.git",
+  "author": "Mark Bevels <mark.bevels@derived.studio>",
+  "license": "MIT"
+}

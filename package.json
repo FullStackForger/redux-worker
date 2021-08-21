@@ -5,5 +5,8 @@
   "main": "index.js",
   "repository": "git@github.com:derived-studio/redux-worker.git",
   "author": "Mark Bevels <mark.bevels@derived.studio>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.3.2"
+  }
 }

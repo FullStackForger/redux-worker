@@ -27,6 +27,7 @@
     "webpack-dev-server": "^4.0.0"
   },
   "scripts": {
+    "build": "webpack --config ./webpack.dev.js --progress --profile",
     "dev": "webpack serve --config ./webpack.dev.js --progress --profile"
   }
 }

@@ -15,9 +15,9 @@ module.exports = {
 
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist'),
+      directory: path.join(__dirname, 'dist')
     },
-    open: true,    
+    open: true,
     compress: false,
     port: 9100
   },
@@ -42,6 +42,15 @@ module.exports = {
           }
         ],
         include: /src/
+      },
+      {
+        test: /\.worker\.(c|m)?js$/i,
+        loader: 'worker-loader',
+        options: {
+          type: 'classic',
+          filename: '[name].[contenthash].worker.js',
+          name: 'my-custom-worker-name'
+        }
       },
       {
         test: /\.js$/,

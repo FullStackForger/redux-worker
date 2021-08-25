@@ -31,6 +31,6 @@
     "clean": "rimraf ./dist",
     "build": "webpack --config ./webpack.dev.js --progress --profile",
     "dev": "webpack serve --config ./webpack.dev.js --progress --profile",
-    "rebuild": "yarn clean && yarn rebuild"
+    "rebuild": "yarn clean && yarn build"
   }
 }

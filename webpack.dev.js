@@ -5,12 +5,15 @@ const ESLintPlugin = require('eslint-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  entry: './src/dev/index.ts',
+  entry: {
+    app: './src/index.ts'
+  },
   devtool: 'cheap-module-source-map',
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js'
+    chunkFilename: '[name].js'
+    // filename: 'index.js'
   },
 
   devServer: {
@@ -44,27 +47,26 @@ module.exports = {
         include: /src/
       },
       {
-        test: /\.worker\.(c|m)?js$/i,
-        loader: 'worker-loader',
-        options: {
-          type: 'classic',
-          filename: '[name].[contenthash].worker.js',
-          name: 'my-custom-worker-name'
-        }
-      },
-      {
         test: /\.js$/,
         use: ['babel-loader'],
         include: /src/
       }
     ]
   },
-
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      chunks: 'all',
+      minSize: 0,
+      hidePathInfo: false,
+      name: 'common'
+    }
+  },
   plugins: [
     new ESLintPlugin({ emitError: true, emitWarning: true, outputReport: true, files: 'src/**' }),
     new HtmlWebpackPlugin({
       inject: true,
-      template: './src/dev/index.html'
+      template: './src/static/index.html'
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development')

@@ -19,7 +19,7 @@ It is also an attempt of setting up typescript dev server running with module ty
 [+] client/worker transport wrapper
 [+] common sharable chunks reusable by the client and the worker
 [+] typescript setup for the client with esm module
-[+] example code
+[-] usage of redux devtools for easier tracking
 [-] typescript setup for the back-end with commonjs module
 [-] server created with express.js
 [-] server run with ts-node

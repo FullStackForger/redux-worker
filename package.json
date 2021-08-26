@@ -30,10 +30,17 @@
     "webpack-dev-server": "^4.0.0"
   },
   "scripts": {
-    "clean": "rimraf ./dist",
-    "build": "webpack --config ./webpack.dev.js --progress --profile",
+    "clear:cache": "rimraf ./node_modules/.cache",
+    "clear:app": "rimraf ./build/app/",
+    "clear:vendor": "rimraf ./build/vendor/",
+    "clear:build": "rimraf ./build/",
+    "clear:dist": "rimraf ./dist/",
+    "clear:all": "yarn clear:build && clear:cache && yarn clear:dist",
+    "build:vendor": "webpack --config ./webpack.vendor.js --progress --profile",
+    "build:app": "webpack --config ./webpack.dev.js --progress --profile",
+    "build": "([ ! -f ./build/vendor/vendor.js ] && yarn build:vendor); yarn build:app",
     "dev": "webpack serve --config ./webpack.dev.js --progress --profile",
-    "start": "http-server ./build --port 9100 -g",
-    "rebuild": "yarn clean && yarn build"
+    "start": "http-server ./build/app --port 9100 -g",
+    "rebuild": "yarn clear:all && yarn build"
   }
 }

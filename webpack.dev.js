@@ -3,6 +3,8 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 
+const buildDir = 'build'
+
 module.exports = {
   mode: 'development',
   entry: {
@@ -11,14 +13,14 @@ module.exports = {
   devtool: 'cheap-module-source-map',
 
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, buildDir),
     chunkFilename: '[name].js'
     // filename: 'index.js'
   },
 
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist')
+      directory: path.join(__dirname, buildDir)
     },
     open: true,
     compress: false,

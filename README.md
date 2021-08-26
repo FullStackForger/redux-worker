@@ -17,10 +17,10 @@ That's where redux as a predictable state container comes to play. Described arc
 
 ## Features
 
-[+] build configuration with webpack 5x
-[+] client/worker transport wrapper
-[+] common sharable chunks reusable by the client and the worker
-[+] chunks are grouped into app, app-worker, vendor, shared
-[+] typescript setup for the client with esm module
-[+] utilizing webpack-dll plugin for improved performance
-[-] redux devtools plugin for ease of debugging
+- [x] build configuration with webpack 5x
+- [x] client/worker transport wrapper
+- [x] common sharable chunks reusable by the client and the worker
+- [x] chunks are grouped into app, app-worker, vendor, shared
+- [x] typescript setup for the client with esm module
+- [x] utilizing webpack-dll plugin for improved performance
+- [ ] redux devtools plugin for ease of debugging

@@ -4,23 +4,23 @@ Experimental webpack setup for client/worker redux stores sharing common chunks.
 
 ## Motivation
 
-I have been working on a web-app with pretty complex business logic blocking main process. Most of which is encapsulated in redux middleware.
-I wanted to moving some of it into a worker and only auto propagate changes back to a client store via thin transport layer. That is done by dispatching event-actions with required change deltas that then are reduced into client store.
+Working on a redux web-app with pretty complex business encapsulated in middleware or complex reducers (code smell) can often lead to blocking of the main process. It can be mitigated by moving expensive computation into the web-worker (or shared worker), running copy of the store and auto propagating changes back to a client store via thin transport layer.
 
-The catch is allowing possible shape differences between the client and the worker store, which excludes possibility of using library like [redux-in-worker](https://www.npmjs.com/package/redux-in-worker), which propagates store deltas keeping both store in synchronized state which is not the case here.
+There are existing tools like [redux-in-worker](https://www.npmjs.com/package/redux-in-worker) allowing store synchronization between with update deltas.
+While it has been design for redux it was also design for synching identical stores.
 
-It is also an attempt of setting up typescript dev server running with module type (\*CommonJS) different to one used while compiling client typescript code (ESM).
+Alternatively, there is [neomjs](https://github.com/neomjs/neo) - framework for creating multi-process apps with use of modern ES modules (.mjs) and while it tackles a lot of complexities it for a bit different purpose.
 
-\*) node 16.x (latest as of right now) doesn't support ESM yet outside of experimental mode.
+Splitting application into different layers ([n-tier](https://en.wikipedia.org/wiki/Multitier_architecture) architecture) is not a new concept. Layers can share the shape of the data which improves code reusability and potentially reduces overall size of the final bundle. However, enforcing same state on all of the layers might not be the best idea.
+
+That's where redux as a predictable state container comes to play. Described architecture is easily achievable with use of reducers and transport actions used to synchronize state between different layers. Such actions could carry change deltas as their payload which then can be simply reduced into appropriate store during action consumption.
 
 ## Features
 
 [+] build configuration with webpack 5x
 [+] client/worker transport wrapper
 [+] common sharable chunks reusable by the client and the worker
+[+] chunks are grouped into app, app-worker, vendor, shared
 [+] typescript setup for the client with esm module
-[-] usage of redux devtools for easier tracking
-[-] typescript setup for the back-end with commonjs module
-[-] server created with express.js
-[-] server run with ts-node
-[-] server auto reload with nodemon
+[+] utilizing webpack-dll plugin for improved performance
+[-] redux devtools plugin for ease of debugging

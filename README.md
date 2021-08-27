@@ -6,7 +6,7 @@ Experimental webpack setup for client/worker redux stores sharing common chunks.
 
 Working on a redux web-app with pretty complex business encapsulated in middleware or complex reducers (code smell) can often lead to blocking of the main process. It can be mitigated by moving expensive computation into the web-worker (or shared worker), running copy of the store and auto propagating changes back to a client store via thin transport layer.
 
-There are existing tools like [redux-in-worker](https://www.npmjs.com/package/redux-in-worker) allowing store synchronization between with update deltas.
+There are existing tools like [redux-in-worker](https://www.npmjs.com/package/redux-in-worker) allowing store synchronization with update deltas.
 While it has been design for redux it was also design for synching identical stores.
 
 Alternatively, there is [neomjs](https://github.com/neomjs/neo) - framework for creating multi-process apps with use of modern ES modules (.mjs) and while it tackles a lot of complexities it for a bit different purpose.

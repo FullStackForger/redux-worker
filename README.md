@@ -1,6 +1,6 @@
 # redux-worker
 
-Experimental webpack setup for client/worker redux stores sharing common chunks.
+Experimental webpack setup with code splitting for client/worker redux stores with shared state.
 
 ## Motivation
 
